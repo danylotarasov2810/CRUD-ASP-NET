@@ -69,15 +69,14 @@ namespace CRUD_ASP_NET.Pages.Clients
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    String sql = "UPDATE clients " +
-                        "SET name=@name, email=@email, phone=@phone, address=@address" +
-                        "WHERE id=@id;";
+                    String sql = "UPDATE clients " + "SET name=@name, email=@email, phone=@phone, address=@address " + "WHERE id=@id";
                     using (SqlCommand command = new SqlCommand(sql, connection))
                     {
                         command.Parameters.AddWithValue("@name", clientInfo.name);
                         command.Parameters.AddWithValue("@email", clientInfo.email);
                         command.Parameters.AddWithValue("@phone", clientInfo.phone);
                         command.Parameters.AddWithValue("@address", clientInfo.address);
+                        command.Parameters.AddWithValue("@id", clientInfo.id);
                         command.ExecuteNonQuery();
                     }
                 }
